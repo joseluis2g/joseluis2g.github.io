@@ -17,12 +17,15 @@ addEvents:function email() {
             subject != null && subject.length > 0 &&
             message != null && message.length > 0)
         {
-            var inlineMessage = "Nombre: " + name + "</br>E-mail: " + email + "</br>Asunto: " + subject + "</br></br>Mensaje: " + message;
-			
             $.ajax({
                 url: "//formspree.io/joseluis.ggr@gmail.com", 
                 method: "POST",
-                data: { message: inlineMessage },
+                data: { 
+					name: name,
+					email: email,
+					comments: message,
+					_subject: subject
+				},
                 dataType: "json",
 				success: function(data) {
 					if (lang == "es-ES")
